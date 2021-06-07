@@ -3,7 +3,6 @@ from deap import base, creator, tools
 def eval_func(individual):
     target_sum = 15
     return len(individual) - abs(sum(individual) - target_sum)
-    
 def create_toolbox(num_bits):
     creator.create("FitnessMax", base.Fitness, weights = (1.0,))
     creator.create("Individual", list, fitness = creator.FitnessMax)
@@ -16,7 +15,6 @@ def create_toolbox(num_bits):
     toolbox.register("mutate", tools.mutFlipBit, indpb = 0.05)    
     toolbox.register("select", tools.selTournament, tournsize = 3)
     return toolbox
-    
 if __name__ == "__main__":   
     num_bits = 45
     toolbox = create_toolbox(num_bits)
